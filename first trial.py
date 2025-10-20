@@ -2,6 +2,8 @@
 import time
 
 #variables
+hasStick:bool = False
+
 
 #functions
 def is_convertible_to_int(value):
@@ -41,13 +43,19 @@ def startGame():
     time.sleep(1)
     print("\nYou find yourself in a stone path.\nTwo illuminated torii shine bright-red in front of you.")
     time.sleep(1)
-    match Response("What is your name?", "Jeff", "John", "Mr bean"):
+    print("Seeing the dimly-lit temple ahead, you proceed forward.\nAs you walk, you see a wooden stick to your right.")
+    time.sleep(1)
+    match Response("Take it with you?", "Yes, Hold it in your hand.", "Yes, Put it in your pocket.", "No, leave it be.", "No, throw it."):
         case 1:
-            print("The killer guy?")
+            print("You picked up the stick. It has a green branch sticking out of it.")
+            hasStick = True
         case 2:
-            print("I don't think that's your name")
+            print("You picked up the stick and put it in your pocket. It is almost completely sticking out, but it stays put.")
+            hasStick = True
         case 3:
-            print("ok")
+            print("You ignored the stick")
+        case 4:
+            print("You threw the stick, it made a satisfying sound.")
 
 #Ready
 startGame()
