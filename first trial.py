@@ -40,11 +40,11 @@ def Response(question, *answers):
 def startGame():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     print("Temple Walk, a Choose-Your-Own-Adventure game")
-    time.sleep(1)
+    time.sleep(2)
     print("\nYou find yourself in a stone path.\nTwo illuminated torii shine bright-red in front of you.")
-    time.sleep(1)
+    time.sleep(2)
     print("Seeing the dimly-lit temple ahead, you proceed forward.\nAs you walk, you see a wooden stick to your right.")
-    time.sleep(1)
+    time.sleep(2)
     match Response("Take it with you?", "Yes, Hold it in your hand.", "Yes, Put it in your pocket.", "No, leave it be.", "No, throw it."):
         case 1:
             print("You picked up the stick. It has a green branch sticking out of it.")
@@ -56,6 +56,10 @@ def startGame():
             print("You ignored the stick")
         case 4:
             print("You threw the stick, it made a satisfying sound.")
+            
+    time.sleep(2)
+    print("Continuing ahead, you reach the temple.")
+    time.sleep(1.5)
 
 #Ready
 startGame()
