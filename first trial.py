@@ -82,3 +82,6 @@ def startGame():
 #Ready
 startGame()
 
+#Feedback 
+#I like the text animations and all of the branching paths but its not clear what the impact of the stick will be, gadiblud
+#I dont really have much to say sincd its rlly short
