@@ -3,6 +3,7 @@ import time
 
 #variables
 hasStick:bool = False
+endings:int = 5
 
 
 #functions
@@ -54,8 +55,16 @@ def Response(question, *answers):
     time.sleep(0.5)
     return Response(question, *answers)
 
+def Ending(text:str, num:int):
+    typeWrite(text)
+    time.sleep(1)
+    typeWrite("Ending " + str(num) + " out of " + str(endings))
+    input("Type anything to restart")
+    startGame()
+
 def startGame():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    print(" █                                                                              ████                \n███████████████████████████████                                                 ████                \n ██████████████████████████████                                                 ████                \n            ███                                                                  ███                \n            ███            ████████                ██                            ████               \n            ████         ████████████     ███   ███████                          ████    ████████   \n            ████        █████     █████   ████ ████████                          ████  ████████████ \n            ████       █████████████████  ████████ ██████████          ██████     ███ ████    █████ \n            ████       █████████████████  ███████   ██████████   ██████████████   ███ ████████████  \n             ████     ████                ██████    █████  ████  ██████     ████  ███ █████████     \n             ████      ███                █████     █████   ████  ████       ████ ████ ████         \n              ███      ████               █████      ████   ████  ████       ████  ███  ████        \n              ████      █████             █████      ████    ████ ████       ███   ███   ██████     \n               ███       █████        ███ ████       ████    ████ █████     ████   ███     █████████\n               ███         ███████  █████ ████       ████     ██  ███████  ████    ████       ██████\n                             ███████████    █         ██          ████████████     ████             \n                                  ███                             █████ ████        ██              \n                                                                  █████                             \n                                                                   ████                             \n      ██              █                                            ████                             \n      ███           █████                            ██            ████                             \n      ███          ██████                           ████           ████                             \n      ███         ███████       ██                  ████  ████     ████                             \n      ███        ████████     █████    ██           ████  ████      ███                             \n      ███       ████ ████    ████   ███████         ████  ████      ███                             \n      ████     ████  ████  █████  ██████████        ████  ████                                      \n      ████    ████   ████ ████   ████  ██████       ████  ████                                      \n       ████  ████    ████████   ████  █████████     ████  ████   █████                              \n        ████████     ███████   ████ █████   █████   ████  ████ ██████                               \n          █████       ████      ███████       █████ ████  ██████████                                \n           ███                   ███            ███ ████  ████████                                  \n                                                     ███   █████████                                \n                                                           ███  ██████                              \n                                                            █      ███                              ")
     typeWrite("Temple Walk, a Choose-Your-Own-Adventure game", 2)
     time.sleep(2)
     print("")
@@ -78,10 +87,31 @@ def startGame():
     time.sleep(1)
     typeWrite("Continuing ahead, you reach the temple.")
     time.sleep(1.5)
+    typeWrite("You entered the temple grounds\nBright lanterns line the path\nThe mossy rocks provide a strange sense of comfort")
+    time.sleep(1)
+    match Response("Go inside?", "Enter the main tower", "Leave"):
+        case 1:
+            typeWrite("You entered the tower\nThere are some shiny props and statues behind a closed net.\nIn front of you, there's a little donation box")
+            time.sleep(1)
+            match Response("Donate 10 yen?","Donate","Don't donate"):
+                case 1:
+                    Donated()
+                case 2:
+                    NotDonated()
+                    
+        case 2:
+            Ending("You left", 1)
+            return()
+
+def Donated():
+    pass
+
+def NotDonated():
+    pass
 
 #Ready
 startGame()
 
-#Feedback 
+#Feedback 1
 #I like the text animations and all of the branching paths but its not clear what the impact of the stick will be, gadiblud
 #I dont really have much to say sincd its rlly short
