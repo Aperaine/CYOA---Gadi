@@ -5,6 +5,42 @@ import time
 hasStick:bool = False
 endings:int = 5
 
+logo:str = """
+ █                                                                              ████                
+███████████████████████████████                                                 ████                
+ ██████████████████████████████                                                 ████                
+            ███                                                                  ███                
+            ███            ████████                ██                            ████               
+            ████         ████████████     ███   ███████                          ████    ████████   
+            ████        █████     █████   ████ ████████                          ████  ████████████ 
+            ████       █████████████████  ████████ ██████████          ██████     ███ ████    █████ 
+            ████       █████████████████  ███████   ██████████   ██████████████   ███ ████████████  
+             ████     ████                ██████    █████  ████  ██████     ████  ███ █████████     
+             ████      ███                █████     █████   ████  ████       ████ ████ ████         
+              ███      ████               █████      ████   ████  ████       ████  ███  ████        
+              ████      █████             █████      ████    ████ ████       ███   ███   ██████     
+               ███       █████        ███ ████       ████    ████ █████     ████   ███     █████████
+               ███         ███████  █████ ████       ████     ██  ███████  ████    ████       ██████
+                             ███████████    █         ██          ████████████     ████             
+                                  ███                             █████ ████        ██              
+                                                                  █████                             
+                                                                   ████                             
+      ██              █                                            ████                             
+      ███           █████                            ██            ████                             
+      ███          ██████                           ████           ████                             
+      ███         ███████       ██                  ████  ████     ████                             
+      ███        ████████     █████    ██           ████  ████      ███                             
+      ███       ████ ████    ████   ███████         ████  ████      ███                             
+      ████     ████  ████  █████  ██████████        ████  ████                                      
+      ████    ████   ████ ████   ████  ██████       ████  ████                                      
+       ████  ████    ████████   ████  █████████     ████  ████   █████                              
+        ████████     ███████   ████ █████   █████   ████  ████ ██████                               
+          █████       ████      ███████       █████ ████  ██████████                                
+           ███                   ███            ███ ████  ████████                                  
+                                                     ███   █████████                                
+                                                           ███  ██████                              
+                                                            █      ███                              
+"""
 
 #functions
 def typeWrite(text:str, speed:int = 1):
@@ -64,7 +100,7 @@ def Ending(text:str, num:int):
 
 def startGame():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-    print(" █                                                                              ████                \n███████████████████████████████                                                 ████                \n ██████████████████████████████                                                 ████                \n            ███                                                                  ███                \n            ███            ████████                ██                            ████               \n            ████         ████████████     ███   ███████                          ████    ████████   \n            ████        █████     █████   ████ ████████                          ████  ████████████ \n            ████       █████████████████  ████████ ██████████          ██████     ███ ████    █████ \n            ████       █████████████████  ███████   ██████████   ██████████████   ███ ████████████  \n             ████     ████                ██████    █████  ████  ██████     ████  ███ █████████     \n             ████      ███                █████     █████   ████  ████       ████ ████ ████         \n              ███      ████               █████      ████   ████  ████       ████  ███  ████        \n              ████      █████             █████      ████    ████ ████       ███   ███   ██████     \n               ███       █████        ███ ████       ████    ████ █████     ████   ███     █████████\n               ███         ███████  █████ ████       ████     ██  ███████  ████    ████       ██████\n                             ███████████    █         ██          ████████████     ████             \n                                  ███                             █████ ████        ██              \n                                                                  █████                             \n                                                                   ████                             \n      ██              █                                            ████                             \n      ███           █████                            ██            ████                             \n      ███          ██████                           ████           ████                             \n      ███         ███████       ██                  ████  ████     ████                             \n      ███        ████████     █████    ██           ████  ████      ███                             \n      ███       ████ ████    ████   ███████         ████  ████      ███                             \n      ████     ████  ████  █████  ██████████        ████  ████                                      \n      ████    ████   ████ ████   ████  ██████       ████  ████                                      \n       ████  ████    ████████   ████  █████████     ████  ████   █████                              \n        ████████     ███████   ████ █████   █████   ████  ████ ██████                               \n          █████       ████      ███████       █████ ████  ██████████                                \n           ███                   ███            ███ ████  ████████                                  \n                                                     ███   █████████                                \n                                                           ███  ██████                              \n                                                            █      ███                              ")
+    print(logo)
     typeWrite("Temple Walk, a Choose-Your-Own-Adventure game", 2)
     time.sleep(2)
     print("")
@@ -104,11 +140,85 @@ def startGame():
             return()
 
 def Donated():
-    pass
+    typeWrite("You drop 10 yen into the box.\nIt makes a loud *thunk* sound.\nYou can't see much, but the golden objects in the back appear to shine a little brighter")
+    time.sleep(1)
+    match Response("Leave?", "Leave the tower", "Wait"):
+        case 1:
+            pass
+
+        case 2:
+            typeWrite("You waited\nNothing happened")
+            if Response("","Leave the tower","Wait") == 2:
+                typeWrite("You waited\nStill, nothing happened")
+                if Response("","Leave the tower","Wait") == 2:
+                    typeWrite("You waited\nNothing is happening, you feel disappointed")
+                    if Response("","Leave the tower","Wait") == 2:
+                        typeWrite("You waited\nYou should probably leave the tower")
+                        if Response("","Leave the tower","Wait") == 2:
+                            typeWrite("You waited\n...")
+                            if Response("","Leave the tower","Wait") == 2:
+                                typeWrite("You waited\n...")
+                                if Response("","Leave the tower","Wait") == 2:
+                                    typeWrite("You waited\n...")
+                                    if Response("","Leave the tower","Wait") == 2:
+                                        typeWrite("You waited\nPlease leave")
+                                        Response("","Leave the tower")
+            
+    typeWrite("You left the tower\nThe light of the glowing lanterns feels warm\nThe shadow fo the tower feels alive\nYou are filled with determination")
+    time.sleep(1)
+    typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big building")
+    time.sleep(1)
+
+    match Response("Where do you go?", "Walk the walkway", "Enter the building"):
+        case 1:
+            StatueArea(True)
+
+        case 2:
+            Shoro(True)
+    
 
 def NotDonated():
+    typeWrite("You didn't donate.\nIt makes a loud *thunk* sound.\nYou can't see much, but the golden objects in the back appear to shine a little brighter")
+    time.sleep(1)
+    match Response("Leave?", "Leave the tower", "Wait"):
+        case 1:
+            pass
+
+        case 2:
+            typeWrite("You waited\nNothing happened")
+            if Response("","Leave the tower","Wait") == 2:
+                typeWrite("You waited\nStill, nothing happened")
+                if Response("","Leave the tower","Wait") == 2:
+                    typeWrite("You waited\nNothing is happening, you feel disappointed")
+                    if Response("","Leave the tower","Wait") == 2:
+                        typeWrite("You waited\nYou should probably leave the tower")
+                        if Response("","Leave the tower","Wait") == 2:
+                            typeWrite("You waited\n...")
+                            if Response("","Leave the tower","Wait") == 2:
+                                typeWrite("You waited\n...")
+                                if Response("","Leave the tower","Wait") == 2:
+                                    typeWrite("You waited\n...")
+                                    if Response("","Leave the tower","Wait") == 2:
+                                        typeWrite("You waited\nPlease leave")
+                                        Response("","Leave the tower")
+            
+    typeWrite("You left the tower\nThe light of the glowing lanterns feels warm\nThe shadow fo the tower feels alive\nYou are filled with determination")
+    time.sleep(1)
+    typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big building")
+    time.sleep(1)
+
+    match Response("Where do you go?", "Walk the walkway", "Enter the building"):
+        case 1:
+            StatueArea(True)
+
+        case 2:
+            Shoro(True)
+
+def StatueArea(donated:bool):
     pass
 
+def Shoro(donated:bool): #shōrō is the japanese bell building
+    pass
 #Ready
 startGame()
 
