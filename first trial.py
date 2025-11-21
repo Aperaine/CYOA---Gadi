@@ -51,7 +51,7 @@ def typeWrite(text:str, speed:int = 1):
             print("")
             continue
         print(letter, end="")
-        if letter == ",":
+        if letter == "," or letter == ".":
             time.sleep(0.5 * speed)
         else:
             time.sleep(0.02 * speed)
@@ -164,7 +164,7 @@ def Donated():
                                         typeWrite("You waited\nPlease leave")
                                         Response("","Leave the tower")
             
-    typeWrite("You left the tower\nThe light of the glowing lanterns feels warm\nThe shadow fo the tower feels alive\nYou are filled with determination")
+    typeWrite("You left the tower\nThe light of the glowing lanterns feels warm to your skin\nThe shadow of the tower feels alive\nYou are filled with determination")
     time.sleep(1)
     typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big building")
     time.sleep(1)
@@ -178,36 +178,22 @@ def Donated():
     
 
 def NotDonated():
-    typeWrite("You didn't donate.\nIt makes a loud *thunk* sound.\nYou can't see much, but the golden objects in the back appear to shine a little brighter")
+    typeWrite("You didn't donate.")
     time.sleep(1)
     match Response("Leave?", "Leave the tower", "Wait"):
         case 1:
             pass
 
         case 2:
-            typeWrite("You waited\nNothing happened")
-            if Response("","Leave the tower","Wait") == 2:
-                typeWrite("You waited\nStill, nothing happened")
-                if Response("","Leave the tower","Wait") == 2:
-                    typeWrite("You waited\nNothing is happening, you feel disappointed")
-                    if Response("","Leave the tower","Wait") == 2:
-                        typeWrite("You waited\nYou should probably leave the tower")
-                        if Response("","Leave the tower","Wait") == 2:
-                            typeWrite("You waited\n...")
-                            if Response("","Leave the tower","Wait") == 2:
-                                typeWrite("You waited\n...")
-                                if Response("","Leave the tower","Wait") == 2:
-                                    typeWrite("You waited\n...")
-                                    if Response("","Leave the tower","Wait") == 2:
-                                        typeWrite("You waited\nPlease leave")
-                                        Response("","Leave the tower")
+            typeWrite("You waited\n...But nobody came")
+            Response("","Leave the tower")
             
-    typeWrite("You left the tower\nThe light of the glowing lanterns feels warm\nThe shadow fo the tower feels alive\nYou are filled with determination")
+    typeWrite("You left the tower\nThe wind feels awfully cold\nThe shadow of the tower appears to grow\n\n[[DETERMINATION]]")
     time.sleep(1)
     typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big building")
     time.sleep(1)
 
-    match Response("Where do you go?", "Walk the walkway", "Enter the building"):
+    match Response("Which way?", "Walk the walkway", "Enter the building"):
         case 1:
             StatueArea(True)
 
@@ -215,10 +201,18 @@ def NotDonated():
             Shoro(True)
 
 def StatueArea(donated:bool):
-    pass
+    if donated: #donated route
+        pass
+
+    else: #genocide (not donated) route
+        pass
 
 def Shoro(donated:bool): #shōrō is the japanese bell building
-    pass
+    if donated: #donated route
+        pass
+
+    else: #genocide (not donated) route
+        pass
 #Ready
 startGame()
 
