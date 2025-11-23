@@ -104,7 +104,7 @@ def startGame():
     typeWrite("Temple Walk, a Choose-Your-Own-Adventure game", 2)
     time.sleep(2)
     print("")
-    typeWrite("You find yourself in a stone path.\nTwo illuminated torii shine bright-red in front of you.")
+    typeWrite("In the dark of the mindnight, You find yourself in a stone path.\nTwo illuminated torii shine bright-red in front of you.")
     time.sleep(1)
     typeWrite("Seeing the dimly-lit temple ahead, you proceed forward.\nAs you walk, you see a wooden stick to your right.")
     time.sleep(2)
@@ -195,15 +195,44 @@ def NotDonated():
 
     match Response("Which way?", "Walk the walkway", "Enter the building"):
         case 1:
-            StatueArea(True)
+            StatueArea(False)
 
         case 2:
-            Shoro(True)
+            Shoro(False)
 
 def StatueArea(donated:bool):
     if donated: #donated route
-        pass
+        typeWrite("You walk through the ruined path.\nThe ground is covered in moss.\nHundreds of stone Jizo statues surround you\nThey wear uniquely fitted red beanies and bibs")
+        time.sleep(1)
+        typeWrite("At the end of the route, you find a monk praying to a statue\nYou can't tell what he's saying, or what his goal is at a time like this.")
+        time.sleep(1)
+        typeWrite("In an instant, he snaps his head back at you.")
+        time.sleep(1)
+        match Response('"Did you donate?"',"Yes","No"): #This isn't actualy for checking if the player donated, it's just extra dialogue
+            case 1:
+                typeWrite("\"That's what I thought...\"")
+            case 2:
+                typeWrite("\"You know, I can tell when people are lying\"")
 
+        time.sleep(1)
+        typeWrite("He looks amused\n\"This temple has been abandoned for decades. You are the first to come here since it shut down.\"")
+        time.sleep(1)
+        typeWrite("""He continues, "The spirits here require funds every so often to keep the place usable.
+                  They're running low, and so that hundred yen you dropped could be enough to keep them going another year." """)
+        time.sleep(1)
+        typeWrite("\"If you're done exploring, it's very late. Go home.\"")
+        if hasStick:
+            time.sleep(1)
+            typeWrite("He pauses for a second, \"Oh, and would you mind giving back that stick? It was a gift from a stray cat.\"")
+            match Response("Give the stick back?", "Yes, Give it back", "No, keep it"):
+                case 1:
+                    typeWrite("You gave the stick back")
+                case 2:
+                    typeWrite("You kept the stick.\n\"...I'll just find another stick\"")
+            
+        time.sleep(1)
+        typeWrite("\"Please come back if you ever pass by this place.\"")
+        Ending("The monk is pleased with you.", 2)
     else: #genocide (not donated) route
         pass
 
