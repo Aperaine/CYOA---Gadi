@@ -43,7 +43,7 @@ logo:str = """
 """
 
 #functions
-def typeWrite(text:str, speed:float = 1):
+def typeWrite(text:str, speed:float = 0.8):
     firstChar = True
     for letter in text:
         if letter == "\n" and not firstChar:
@@ -51,7 +51,7 @@ def typeWrite(text:str, speed:float = 1):
             print("")
             continue
         print(letter, end="")
-        if letter == "," or letter == "." or letter == "-":
+        if letter == "," or letter == ".":
             time.sleep(0.5 * speed)
         else:
             time.sleep(0.02 * speed)
@@ -76,7 +76,7 @@ def Response(question, *answers):
         
         constructedquestion += "\n" + str(iteration) + ": " + str(i)
         iteration += 1
-    typeWrite(constructedquestion, 0.5)
+    typeWrite(constructedquestion, 0.75)
     print("")
     response = input().lower()
     if is_convertible_to_int(response):
@@ -303,7 +303,7 @@ def Shoro(donated:bool): #shōrō is the japanese bell building
         time.sleep(1)
         Response("What do you say?", "Yes", "Yeah, but it was only 100 yen")
         typeWrite('''"Like I was saying, this temple is dead
-                  The funds you are only enough for 132 spirits.
+                  The funds you provided are only enough for 132 spirits.
                   Others may not know this, but with the cemetary nearby, there are definetely not enough resources for all of us."
                   
                   Thinking even harder, he comes up with an idea.
