@@ -51,7 +51,7 @@ def typeWrite(text:str, speed:float = 1):
             print("")
             continue
         print(letter, end="")
-        if letter == "," or letter == ".":
+        if letter == "," or letter == "." or letter == "-":
             time.sleep(0.5 * speed)
         else:
             time.sleep(0.02 * speed)
@@ -166,10 +166,10 @@ def Donated():
             
     typeWrite("You left the tower\nThe light of the glowing lanterns feels warm to your skin\nThe shadow of the tower feels alive\nYou are filled with determination")
     time.sleep(1)
-    typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big building")
+    typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big shōrō")
     time.sleep(1)
 
-    match Response("Where do you go?", "Walk the walkway", "Enter the building"):
+    match Response("Where do you go?", "Walk the walkway", "Go to the bell"):
         case 1:
             StatueArea(True)
 
@@ -190,10 +190,10 @@ def NotDonated():
             
     typeWrite("You left the tower\nThe wind feels awfully cold\nThe shadow of the tower appears to grow\n\n[[DETERMINATION]]")
     time.sleep(1)
-    typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big building")
+    typeWrite("To the side, two paths emerge\nOne side reveals a narrow walkway\nThe other side shows a big shōrō")
     time.sleep(1)
 
-    match Response("Which way?", "Walk the walkway", "Enter the building"):
+    match Response("Which way?", "Walk the walkway", "Go to the bell"):
         case 1:
             StatueArea(False)
 
@@ -206,6 +206,10 @@ def StatueArea(donated:bool):
         time.sleep(1)
         typeWrite("At the end of the route, you find a monk praying to a statue\nYou can't tell what he's saying, or what his goal is at a time like this.")
         time.sleep(1)
+        if Response("Approach him?", "Yes, keep going", "No, go towards the belltower instead") == 2:
+            Shoro(True)
+            return
+        
         typeWrite("In an instant, he snaps his head back at you.")
         time.sleep(1)
         match Response('"Did you donate?"',"Yes","No"): #This isn't actualy for checking if the player donated, it's just extra dialogue
@@ -239,6 +243,10 @@ def StatueArea(donated:bool):
         time.sleep(1)
         typeWrite("At the end of the route, you find what appears to be a monk praying to a statue\nYou can't tell what he's doing, but he doesn't seem happy.")
         time.sleep(1)
+        if Response("Approach him?", "Yes, keep going", "No, go towards the belltower instead") == 2:
+            typeWrite("You think about turning around, but something tells you to keep going.")
+            time.sleep(1)
+
         typeWrite("In an instant, he snaps his head back at you.")
         time.sleep(1)
         Response('"Why didn\'t you donate?", he asks somoberly',"1","2") #This isn't actualy for checking if the player donated, it's just extra dialogue
@@ -259,6 +267,7 @@ def StatueArea(donated:bool):
         typeWrite("""Holding onto the 100 yen coin in your pocket, you stand still.
                   As you feel your feet turning hard, you think reconsider why you didn't donate""")
         if hasStick:
+            time.sleep(1)
             typeWrite("Even the stick you took starts to harden")
         
         Ending("You turned to stone",4)
@@ -266,10 +275,107 @@ def StatueArea(donated:bool):
 
 def Shoro(donated:bool): #shōrō is the japanese bell building
     if donated: #donated route
-        pass
+        typeWrite("""You walk towards the bell tower.
+                  Under a bronze roof, a massive bell hangs overhead.
+                  Before the bell, you see a cylindrical hammer with a rope danglling in front of you, waiting to be thrown""")
+        match Response("Ring the bell?", "Ring it", "Don't ring it"):
+            case 2:
+                typeWrite("You chose not to ring the bell.\nThere isn't much else to do here.")
+                match Response("Go somewhere else?", "Walk towards path", "Ring the bell"):
+                    case 1:
+                        StatueArea(True)
+                        return
+        
+        typeWrite("""You pulled back the mallet, and threw it with as much force as you could muster.
+                  The bell tolled with a booming ring.
+                  
+                  In front of you, a yokai arises.
+                  Its features are larger than of any human.
+                  The yellow kimono appears looser than it should be.
+                  Its mouth drools of devilish intent.""")
+        time.sleep(1)
+        typeWrite('''"You should be afraid," it murmurs
+                  "At a time like this, statistics show that spiritual posessions are at an all time high...
+                  Despite what that foolish monk says, there is no saving this sanctum at this point." He tells you
+                  
+                  Taking a moment to think, it comes to a realization:
+                 "Were you the one who donated that coin?" it asks''')
+        time.sleep(1)
+        Response("What do you say?", "Yes", "Yeah, but it was only 100 yen")
+        typeWrite('''"Like I was saying, this temple is dead
+                  The funds you are only enough for 132 spirits.
+                  Others may not know this, but with the cemetary nearby, there are definetely not enough resources for all of us."
+                  
+                  Thinking even harder, he comes up with an idea.
+                  "We don\'t have what it takes to get that money... but what if we did?"''')
+        
+        match Response('"Would you be willing to sacrifice your body for the survival of this beacon?', "Yes", "No"):
+            case 1:
+                typeWrite('''You nod your head
+                          "Great! Now we just need to see if you qualify.
+                          Functional body - Check
+                          10 Fingers - Check
+                          Soullessness... uhh weren't you the one who donated the coin?"
+                          
+                          You nod your head.
+                          "Yeah, unfortunately you don't qualify.''')
+            case 2:
+                typeWrite("You shake your head")
+        
+        time.sleep(1)
+        typeWrite("""Well in that case, we're screwed anyways.
+                  Go back out where you came in, the exit's on your left""")
+        time.sleep(1)
+        Ending("You left the temple with a feeling of discomfort",3)
+        
 
     else: #genocide (not donated) route
-        pass
+        typeWrite("""You walk towards the bell tower.
+                  Under a bronze roof, a massive bell hangs overhead.
+                  Before the bell, you see a cylindrical hammer with a rope danglling in front of you.""")
+        match Response("Ring the bell?", "Ring it", "Don't ring it"):
+            case 2:
+                typeWrite("You thought of not ringing the bell, but something tells you that you should ring it anyway.")
+        
+        typeWrite("""You pulled back the mallet, and threw it with as much force as you could muster.
+                  The bell tolled with a booming ring.
+                  
+                  In front of you, a yokai arises.
+                  Its features are larger than of any human.
+                  The yellow kimono appears looser than it should be.
+                  Its mouth drools of devilish intent.""")
+        time.sleep(1)
+        typeWrite('''"You should be afraid," it murmurs
+                  "At a time like this, statistics show that spiritual posessions are at an all time high...
+                  Despite what that foolish monk says, there is no saving this sanctum at this point." He tells you''')
+        time.sleep(1)
+        typeWrite('''"Like I was saying, this temple is dead
+                  With the fact you came in here without even donating, you've upset a few ghosts." He notifies you.
+                  
+                  Thinking even harder, he comes up with an idea.
+                  "We don\'t have what it takes to get that money... but what if we did?"''')
+        
+        match Response('"Would you be willing to sacrifice your body for the survival of this beacon?', "Yes", "No"):
+            case 2:
+                typeWrite("Something is stoopping you from saying no")
+                Response('"Well what\'s it gonna be? Posession or no possession?', "Yes")
+        
+        typeWrite('''You nod your head
+                  "Great! Now we just need to see if you qualify.
+                  Functional body - Check
+                  10 Fingers - Check
+                  Soullessness - Check"
+                  It looks at you with a grin
+                  
+                  "Well, posession time!"''')
+        
+        time.sleep(1)
+        typeWrite("""You feel hyperaware as it takes over you with a swift motion
+                  Losing consciousness, you're glad you never donated.""")
+        time.sleep(1)
+        Ending("You got posessed",5)
+
+
 #Ready
 startGame()
 
