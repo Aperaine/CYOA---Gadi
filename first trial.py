@@ -43,7 +43,7 @@ logo:str = """
 """
 
 #functions
-def typeWrite(text:str, speed:int = 1):
+def typeWrite(text:str, speed:float = 1):
     firstChar = True
     for letter in text:
         if letter == "\n" and not firstChar:
@@ -218,7 +218,7 @@ def StatueArea(donated:bool):
         typeWrite("He looks amused\n\"This temple has been abandoned for decades. You are the first to come here since it shut down.\"")
         time.sleep(1)
         typeWrite("""He continues, "The spirits here require funds every so often to keep the place usable.
-                  They're running low, and so that hundred yen you dropped could be enough to keep them going another year." """)
+                  They're running out, and so that hundred yen you dropped could be enough to keep them going another year." """)
         time.sleep(1)
         typeWrite("\"If you're done exploring, it's very late. Go home.\"")
         if hasStick:
@@ -233,8 +233,36 @@ def StatueArea(donated:bool):
         time.sleep(1)
         typeWrite("\"Please come back if you ever pass by this place.\"")
         Ending("The monk is pleased with you.", 2)
+    
     else: #genocide (not donated) route
-        pass
+        typeWrite("You walk through the ruined path.\nThe ground is covered in moss.\nHundreds of stone Jizo statues surround you\nThey wear uniquely fitted red beanies and bibs")
+        time.sleep(1)
+        typeWrite("At the end of the route, you find what appears to be a monk praying to a statue\nYou can't tell what he's doing, but he doesn't seem happy.")
+        time.sleep(1)
+        typeWrite("In an instant, he snaps his head back at you.")
+        time.sleep(1)
+        Response('"Why didn\'t you donate?", he asks somoberly',"1","2") #This isn't actualy for checking if the player donated, it's just extra dialogue
+        time.sleep(1)
+        typeWrite("He looks down\n\"This temple has been abandoned for decades. You are the first to come here since it shut down.\"")
+        time.sleep(1)
+        typeWrite("""He continues, "The spirits here require funds every so often to keep the place usable.
+                  They're running out, and so they're gonna need another way to get what they need." """)
+        time.sleep(1)
+        typeWrite(""""If you had just donated, I wouldn't have had to do what I'm about to do.
+                  Without funds, they're gonna need something more valuable.
+                  Your soul, for instance, is something that they would crave."
+                  
+                  He looks at you with a grim expression.
+                  He chants a dialect you don't recognize.
+                  You feel lighter that air, yet stuck to the ground.""")
+        time.sleep(1)
+        typeWrite("""Holding onto the 100 yen coin in your pocket, you stand still.
+                  As you feel your feet turning hard, you think reconsider why you didn't donate""")
+        if hasStick:
+            typeWrite("Even the stick you took starts to harden")
+        
+        Ending("You turned to stone",4)
+
 
 def Shoro(donated:bool): #shōrō is the japanese bell building
     if donated: #donated route
