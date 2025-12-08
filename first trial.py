@@ -257,15 +257,15 @@ def StatueArea(donated:bool):
                   They're running out, and so they're gonna need another way to get what they need." """)
         time.sleep(1)
         typeWrite(""""If you had just donated, I wouldn't have had to do what I'm about to do.
-                  Without funds, they're gonna need something more valuable.
-                  Your soul, for instance, is something that they would crave."
-                  
-                  He looks at you with a grim expression.
-                  He chants a dialect you don't recognize.
-                  You feel lighter that air, yet stuck to the ground.""")
+Without funds, they're gonna need something more valuable.
+Your soul, for instance, is something that they would crave."
+
+He looks at you with a grim expression.
+He chants a dialect you don't recognize.
+You feel lighter that air, yet stuck to the ground.""")
         time.sleep(1)
         typeWrite("""Holding onto the 100 yen coin in your pocket, you stand still.
-                  As you feel your feet turning hard, you think reconsider why you didn't donate""")
+As you feel your feet turning hard, you think reconsider why you didn't donate""")
         if hasStick:
             time.sleep(1)
             typeWrite("Even the stick you took starts to harden")
@@ -276,8 +276,8 @@ def StatueArea(donated:bool):
 def Shoro(donated:bool): #shōrō is the japanese bell building
     if donated: #donated route
         typeWrite("""You walk towards the bell tower.
-                  Under a bronze roof, a massive bell hangs overhead.
-                  Before the bell, you see a cylindrical hammer with a rope danglling in front of you, waiting to be thrown""")
+Under a bronze roof, a massive bell hangs overhead.
+Before the bell, you see a cylindrical hammer with a rope danglling in front of you, waiting to be thrown""")
         match Response("Ring the bell?", "Ring it", "Don't ring it"):
             case 2:
                 typeWrite("You chose not to ring the bell.\nThere isn't much else to do here.")
@@ -287,73 +287,72 @@ def Shoro(donated:bool): #shōrō is the japanese bell building
                         return
         
         typeWrite("""You pulled back the mallet, and threw it with as much force as you could muster.
-                  The bell tolled with a booming ring.
-                  
-                  In front of you, a yokai arises.
-                  Its features are larger than of any human.
-                  The yellow kimono appears looser than it should be.
-                  Its mouth drools of devilish intent.""")
+The bell tolled with a booming ring.
+
+In front of you, a yokai arises.
+Its features are larger than of any human.
+The yellow kimono appears looser than it should be.
+Its mouth drools of devilish intent.""")
         time.sleep(1)
         typeWrite('''"You should be afraid," it murmurs
-                  "At a time like this, statistics show that spiritual posessions are at an all time high...
-                  Despite what that foolish monk says, there is no saving this sanctum at this point." He tells you
-                  
-                  Taking a moment to think, it comes to a realization:
-                 "Were you the one who donated that coin?" it asks''')
+"At a time like this, statistics show that spiritual posessions are at an all time high...
+Despite what that foolish monk says, there is no saving this sanctum at this point." He tells you
+
+Taking a moment to think, it comes to a realization:
+"Were you the one who donated that coin?" it asks''')
         time.sleep(1)
         Response("What do you say?", "Yes", "Yeah, but it was only 100 yen")
         typeWrite('''"Like I was saying, this temple is dead
-                  The funds you provided are only enough for 132 spirits.
-                  Others may not know this, but with the cemetary nearby, there are definetely not enough resources for all of us."
-                  
-                  Thinking even harder, he comes up with an idea.
-                  "We don\'t have what it takes to get that money... but what if we did?"''')
+The funds you provided are only enough for 132 spirits.
+Others may not know this, but with the cemetary nearby, there are definetely not enough resources for all of us."
+
+Thinking even harder, he comes up with an idea.
+"We don\'t have what it takes to get that money... but what if we did?"''')
         
         match Response('"Would you be willing to sacrifice your body for the survival of this beacon?', "Yes", "No"):
             case 1:
                 typeWrite('''You nod your head
-                          "Great! Now we just need to see if you qualify.
-                          Functional body - Check
-                          10 Fingers - Check
-                          Soullessness... uhh weren't you the one who donated the coin?"
-                          
-                          You nod your head.
-                          "Yeah, unfortunately you don't qualify.''')
+"Great! Now we just need to see if you qualify.
+Functional body - Check
+10 Fingers - Check
+Soullessness... uhh weren't you the one who donated the coin?"
+
+You nod your head.
+"Yeah, unfortunately you don't qualify.''')
             case 2:
                 typeWrite("You shake your head")
         
         time.sleep(1)
         typeWrite("""Well in that case, we're screwed anyways.
-                  Go back out where you came in, the exit's on your left""")
+Go back out where you came in, the exit's on your left""")
         time.sleep(1)
         Ending("You left the temple with a feeling of discomfort",3)
         
 
     else: #genocide (not donated) route
         typeWrite("""You walk towards the bell tower.
-                  Under a bronze roof, a massive bell hangs overhead.
-                  Before the bell, you see a cylindrical hammer with a rope danglling in front of you.""")
+Under a bronze roof, a massive bell hangs overhead.
+Before the bell, you see a cylindrical hammer with a rope danglling in front of you.""")
         match Response("Ring the bell?", "Ring it", "Don't ring it"):
             case 2:
                 typeWrite("You thought of not ringing the bell, but something tells you that you should ring it anyway.")
         
         typeWrite("""You pulled back the mallet, and threw it with as much force as you could muster.
-                  The bell tolled with a booming ring.
-                  
-                  In front of you, a yokai arises.
-                  Its features are larger than of any human.
-                  The yellow kimono appears looser than it should be.
-                  Its mouth drools of devilish intent.""")
+The bell tolled with a booming ring.
+
+In front of you, a yokai arises.
+Its features are larger than of any human.
+The yellow kimono appears looser than it should be.
+Its mouth drools of devilish intent.""")
         time.sleep(1)
         typeWrite('''"You should be afraid," it murmurs
-                  "At a time like this, statistics show that spiritual posessions are at an all time high...
-                  Despite what that foolish monk says, there is no saving this sanctum at this point." He tells you''')
+"At a time like this, statistics show that spiritual posessions are at an all time high...
+Despite what that foolish monk says, there is no saving this sanctum at this point." He tells you''')
         time.sleep(1)
         typeWrite('''"Like I was saying, this temple is dead
-                  With the fact you came in here without even donating, you've upset a few ghosts." He notifies you.
-                  
-                  Thinking even harder, he comes up with an idea.
-                  "We don\'t have what it takes to get that money... but what if we did?"''')
+With the fact you came in here without even donating, you've upset a few ghosts." He notifies you.
+Thinking even harder, he comes up with an idea.
+"We don\'t have what it takes to get that money... but what if we did?"''')
         
         match Response('"Would you be willing to sacrifice your body for the survival of this beacon?', "Yes", "No"):
             case 2:
@@ -361,17 +360,17 @@ def Shoro(donated:bool): #shōrō is the japanese bell building
                 Response('"Well what\'s it gonna be? Posession or no possession?', "Yes")
         
         typeWrite('''You nod your head
-                  "Great! Now we just need to see if you qualify.
-                  Functional body - Check
-                  10 Fingers - Check
-                  Soullessness - Check"
-                  It looks at you with a grin
-                  
-                  "Well, posession time!"''')
+"Great! Now we just need to see if you qualify.
+Functional body - Check
+10 Fingers - Check
+Soullessness - Check"
+It looks at you with a grin
+
+"Well, posession time!"''')
         
         time.sleep(1)
         typeWrite("""You feel hyperaware as it takes over you with a swift motion
-                  Losing consciousness, you're glad you never donated.""")
+Losing consciousness, you're glad you never donated.""")
         time.sleep(1)
         Ending("You got posessed",5)
 
